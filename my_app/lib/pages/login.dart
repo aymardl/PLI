@@ -90,13 +90,17 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {}
                     },
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                   style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.fromLTRB(50, 15, 50, 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
                     ),
+                  ),
                     child: const Text(
-                      'Sign in',
+                      'Connection',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        
                       ),
                     ),
                   ),
@@ -106,18 +110,19 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Not registered yet?'),
+                      const Text('Vous n\'avez pas de compte?'),
                       TextButton(
+                        
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  const RegisterPage(title: 'Register UI'),
+                                  const RegisterPage(title: ''),
                             ),
                           );
                         },
-                        child: const Text('Create an account'),
+                        child: const Text('Creer un compte'),
                         
                       ),
                     ],

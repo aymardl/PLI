@@ -4,6 +4,7 @@ import 'package:my_app/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
+  
 }
 
 ColorScheme defaultColorScheme = const ColorScheme(
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: defaultColorScheme,
         primarySwatch: Colors.blue,

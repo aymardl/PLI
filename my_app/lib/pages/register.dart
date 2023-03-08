@@ -25,10 +25,10 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Sign up',
+              'CRÉER UN COMPTE',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 40,
+                fontSize: 37,
               ),
             ),
             const SizedBox(
@@ -44,10 +44,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: TextFormField(
                           validator: (value) => EmailValidator.validate(value!)
                               ? null
-                              : "Please enter a valid email",
+                              : "Entrer un email email valide",
                           maxLines: 1,
                           decoration: InputDecoration(
-                            hintText: 'First name',
+                            hintText: 'Nom',
                             prefixIcon: const Icon(Icons.person),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -62,10 +62,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: TextFormField(
                           validator: (value) => EmailValidator.validate(value!)
                               ? null
-                              : "Please enter a valid email",
+                              : "Entrer un email email valide",
                           maxLines: 1,
                           decoration: InputDecoration(
-                            hintText: 'Last name',
+                            hintText: 'Prénom',
                             prefixIcon: const Icon(Icons.person),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -81,10 +81,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   TextFormField(
                     validator: (value) => EmailValidator.validate(value!)
                         ? null
-                        : "Please enter a valid email",
+                        : "Entrer un email email valide",
                     maxLines: 1,
                     decoration: InputDecoration(
-                      hintText: 'Enter your email',
+                      hintText: 'Entrer un email email',
                       prefixIcon: const Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -97,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   TextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
+                        return 'Entrer votre mot de passe';
                       }
                       return null;
                     },
@@ -105,7 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock),
-                      hintText: 'Enter your password',
+                      hintText: 'Entrer votre mot de passe',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -119,10 +119,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       if (_formKey.currentState!.validate()) {}
                     },
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                      padding: const EdgeInsets.fromLTRB(50, 15, 50, 15),
+                       shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     ),
                     child: const Text(
-                      'Sign up',
+                      'Créer votre compte',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -134,18 +137,18 @@ class _RegisterPageState extends State<RegisterPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Already registered?'),
+                      const Text('Compte deja exisant'),
                       TextButton(
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  const LoginPage(title: 'Login UI'),
+                                  const LoginPage(title: ''),
                             ),
                           );
                         },
-                        child: const Text('Sign in'),
+                        child: const Text('Connection'),
                       ),
                     ],
                   ),
