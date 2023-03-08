@@ -148,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           );
                         },
-                        child: const Text('Connection'),
+                        child: const Text('Connexion'),
                       ),
                     ],
                   ),

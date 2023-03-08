@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'CONNECTION',
+              'CONNEXION',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 40,
@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                     child: const Text(
-                      'Connection',
+                      'Connexion',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         
