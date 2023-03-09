@@ -10,8 +10,6 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   int _indexSelect = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static final List<Widget> _widgetOption = <Widget>[
     const StudentView(),
     const Historique(),
@@ -30,15 +28,29 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+        appBar: AppBar(
+          title: const Text('BRICOFLEX', ),
+
+          backgroundColor: const Color(0xff121212),
+            leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+          },
+  ),
+
+        ),
+
+      backgroundColor: const Color(0xff121212),
         body: Center(
           child: _widgetOption.elementAt(_indexSelect),
         ),
         bottomNavigationBar: Container(
             decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Color(0xff121212),
                 boxShadow: [
                   BoxShadow(
-                      blurRadius: 20,
+                      blurRadius: 1,
                       color: Color.fromARGB(255, 84, 83, 83))
                 ]),
             child: SafeArea(
@@ -48,8 +60,8 @@ class _NavBarState extends State<NavBar> {
                   vertical: 4,
                 ),
                 child: GNav(
-                  rippleColor: const Color.fromARGB(255, 194, 190, 190),
-                  hoverColor: const Color.fromARGB(255, 194, 190, 190),
+                  rippleColor: const Color.fromARGB(255, 48, 47, 47),
+                  hoverColor: const Color.fromARGB(255, 48, 47, 47),
                   gap: 5,
                   activeColor: tabColor.elementAt(_indexSelect),
                   tabs: const [
@@ -138,7 +150,3 @@ class Agenda extends StatefulWidget {
     throw UnimplementedError();
   }
 }
-
-
-
-
