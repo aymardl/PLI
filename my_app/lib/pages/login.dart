@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:my_app/pages/navbar.dart';
 import 'package:my_app/pages/register.dart';
 
 class LoginPage extends StatefulWidget {
@@ -89,6 +90,14 @@ class _LoginPageState extends State<LoginPage> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {}
+                      Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const NavBar(),
+                            ),
+                          );
+
                     },
                    style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.fromLTRB(50, 15, 50, 15),

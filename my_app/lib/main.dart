@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:my_app/pages/login.dart';
-
-void main() {
+void main() async {
   runApp(const MyApp());
+   WidgetsFlutterBinding.ensureInitialized();
+  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  runApp(MyApp(savedThemeMode: savedThemeMode));
   
 }
 
 ColorScheme defaultColorScheme = const ColorScheme(
-  primary: Color(0xffBB86FC),
+  primary: Color(0xff8A2BE2),
   secondary: Color(0xff03DAC6),
   surface: Color(0xff181818),
   background: Color(0xff121212),
@@ -22,13 +24,13 @@ ColorScheme defaultColorScheme = const ColorScheme(
 );
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key, AdaptiveThemeMode? savedThemeMode}) : super(key: key);
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'PLI',
        debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: defaultColorScheme,
@@ -37,4 +39,4 @@ class MyApp extends StatelessWidget {
       home: const LoginPage(title: 'Login UI'),
     );
   }
-}
+  }
