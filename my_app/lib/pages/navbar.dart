@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:my_app/pages/login.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -30,14 +33,79 @@ class _NavBarState extends State<NavBar> {
     return Scaffold(
 
         appBar: AppBar(
-          title: const Text('BRICOFLEX', ),
+          title: const Text('BRICOFLEX'),
 
           backgroundColor: const Color(0xff121212),
-            leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-          },
-  ),
+            leading:IconButton(
+  icon: const Icon(Icons.logout),
+  onPressed: () {
+ showDialog(
+  context: context,
+  builder: (BuildContext context) {
+    return BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+      child: AlertDialog(
+        title: const Text(
+          'Déconnexion',
+          style: TextStyle(
+            color: Color(0xff8A2BE2),
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        content: const Text(
+          'Voulez-vous vous déconnecter ?',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+          ),
+        ),
+        backgroundColor: Color.fromARGB(255, 46, 46, 46),
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+
+        actions: <Widget>[
+          TextButton(
+            child: const Text(
+              'Annuler',
+              style: TextStyle(
+                color: Color(0xff8A2BE2),
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: const Text(
+              'Déconnexion',
+              style: TextStyle(
+                color: Color(0xff8A2BE2),
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            onPressed: () {
+                  Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const LoginPage(title: '',),
+                            ),
+                          );
+            },
+          ),
+        ],
+      ),
+    );
+  },
+);
+  },
+),
 
         ),
 
