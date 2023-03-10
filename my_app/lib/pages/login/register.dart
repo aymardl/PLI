@@ -1,17 +1,17 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/pages/navbar.dart';
-import 'package:my_app/pages/register.dart';
+import 'package:my_app/pages/login/login.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key, required this.title}) : super(key: key);
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
   var rememberValue = false;
 
@@ -26,10 +26,10 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'CONNEXION',
+              'CRÉER UN COMPTE',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 40,
+                fontSize: 37,
               ),
             ),
             const SizedBox(
@@ -39,14 +39,54 @@ class _LoginPageState extends State<LoginPage> {
               key: _formKey,
               child: Column(
                 children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          validator: (value) => EmailValidator.validate(value!)
+                              ? null
+                              : "Entrer un email email valide",
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            hintText: 'Nom',
+                            prefixIcon: const Icon(Icons.person),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: TextFormField(
+                          validator: (value) => EmailValidator.validate(value!)
+                              ? null
+                              : "Entrer un email email valide",
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            hintText: 'Prénom',
+                            prefixIcon: const Icon(Icons.person),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   TextFormField(
                     validator: (value) => EmailValidator.validate(value!)
                         ? null
                         : "Entrer un email email valide",
                     maxLines: 1,
                     decoration: InputDecoration(
-                      hintText: 'Entrer votre email',
-                      prefixIcon  : const Icon(Icons.email),
+                      hintText: 'Entrer un email email',
+                      prefixIcon: const Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -58,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Entrer un mot de passe valid';
+                        return 'Entrer votre mot de passe';
                       }
                       return null;
                     },
@@ -66,23 +106,11 @@ class _LoginPageState extends State<LoginPage> {
                     obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock),
-                      hintText: 'Entrer votre password',
+                      hintText: 'Entrer votre mot de passe',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                  ),
-                  CheckboxListTile(
-                    title: const Text("Se souvenir de moi"),
-                    contentPadding: EdgeInsets.zero,
-                    value: rememberValue,
-                    activeColor: Theme.of(context).colorScheme.primary,
-                    onChanged: (newValue) {
-                      setState(() {
-                        rememberValue = newValue!;
-                      });
-                    },
-                    controlAffinity: ListTileControlAffinity.leading,
                   ),
                   const SizedBox(
                     height: 20,
@@ -90,26 +118,17 @@ class _LoginPageState extends State<LoginPage> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {}
-                      Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const NavBar(),
-                            ),
-                          );
-
                     },
-                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(50, 15, 50, 15),
-                    shape: RoundedRectangleBorder(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.fromLTRB(50, 15, 50, 15),
+                       shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                  ),
+                    ),
                     child: const Text(
-                      'Connexion',
+                      'Créer votre compte',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        
                       ),
                     ),
                   ),
@@ -119,20 +138,18 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Vous n\'avez pas de compte?'),
+                      const Text('Compte deja exisant'),
                       TextButton(
-                        
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  const RegisterPage(title: ''),
+                                  const LoginPage(title: ''),
                             ),
                           );
                         },
-                        child: const Text('Creer un compte'),
-                        
+                        child: const Text('Connexion'),
                       ),
                     ],
                   ),

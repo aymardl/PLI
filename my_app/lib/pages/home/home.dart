@@ -1,8 +1,12 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:my_app/pages/login.dart';
+import 'package:my_app/pages/login/login.dart';
+import '../navbar/acceuil.dart';
+import '../navbar/agenda.dart';
+import '../navbar/message.dart';
+import '../navbar/profil.dart';
+
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -14,10 +18,10 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _indexSelect = 0;
   static final List<Widget> _widgetOption = <Widget>[
-    const StudentView(),
-    const Historique(),
-    const GSheet(),
-    const AgendaView(), 
+    const AccueilPage(),
+    const MessagePage(),
+    const AgendaPage(),
+    const ProfilPage(), 
   ];
   final List<Color> tabColor = [
     const Color(0xff8A2BE2),
@@ -60,7 +64,7 @@ class _NavBarState extends State<NavBar> {
             fontSize: 16,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 46, 46, 46),
+        backgroundColor: const Color.fromARGB(255, 46, 46, 46),
         elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -146,16 +150,16 @@ class _NavBarState extends State<NavBar> {
                       text: "Messages ",
                     ),
                     GButton(
-                      icon: Icons.account_circle_outlined,
-                      iconSize: 30,
-                      iconColor: Color(0xff8A2BE2),
-                      text: "Profils",
-                    ),
-                    GButton(
                       icon: Icons.calendar_month_outlined,
                       iconSize: 30,
                       iconColor: Color(0xff8A2BE2),
                       text: "Agenda",
+                    ),
+                    GButton(
+                      icon: Icons.account_circle_outlined,
+                      iconSize: 30,
+                      iconColor: Color(0xff8A2BE2),
+                      text: "Profils",
                     ),
                   ],
                   selectedIndex: _indexSelect,
@@ -167,54 +171,5 @@ class _NavBarState extends State<NavBar> {
                 ),
               ),
             )));
-  }
-}
-
-class AgendaView extends StatefulWidget {
-  const AgendaView({Key? key}) : super(key: key);
-
-@override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
-  
-}
-
-class StudentView extends StatefulWidget {
-  const StudentView({Key? key}) : super(key: key);
-  
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
-}
-class  Historique extends StatefulWidget {
-  const Historique({Key? key}) : super(key: key);
-  
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
-}
-class GSheet extends StatefulWidget {
-  const GSheet({Key? key}) : super(key: key);
-  
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
-}
-
-class Agenda extends StatefulWidget {
-  const Agenda({Key? key}) : super(key: key);
-  
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

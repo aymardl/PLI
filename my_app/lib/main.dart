@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:my_app/pages/login.dart';
+import 'package:my_app/pages/login/login.dart';
 void main() async {
   runApp(const MyApp());
    WidgetsFlutterBinding.ensureInitialized();
